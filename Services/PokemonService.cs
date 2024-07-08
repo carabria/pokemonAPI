@@ -36,5 +36,16 @@ namespace Pokemon_CLI.Services
             RestResponse<PokemonObject> response = client.Execute<PokemonObject>(request);
             return response.Data.Results;
         }
+        
+        public Result[] GetPreviousPokemon(int offset, int? limit) 
+        {
+            RestRequest request = new RestRequest($"{API_URL}");
+            request.AddQueryParameter("offset", offset.ToString());
+            if (limit.HasValue) {
+                request.AddQueryParameter("limit", limit.ToString());
+            }
+            RestResponse<PokemonObject> response = client.Execute<PokemonObject>(request);
+            return response.Data.Results;
+        }
     }
 }

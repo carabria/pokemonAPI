@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Pokemon CLI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+16571b15aabcfbf8c92bbc24a070e1b906abebec")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+da0c70f9328ae87b1faa8a1ccd066e304e58b4fc")]
 [assembly: System.Reflection.AssemblyProductAttribute("Pokemon CLI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Pokemon CLI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
