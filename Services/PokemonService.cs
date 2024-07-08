@@ -21,7 +21,17 @@ namespace Pokemon_CLI.Services
             }
         }
 
-        public Result[] GetAllPokemon()
+        public Result[] GetAllPokemon(int? limit)
+        {
+            RestRequest request = new RestRequest($"{API_URL}");
+            if (limit.HasValue) {
+                request.AddQueryParameter("limit", limit.Value.ToString());
+            }
+            RestResponse<PokemonObject> response = client.Execute<PokemonObject>(request);
+            return response.Data.Results;
+        }
+
+        public Result[] GetNextPokemon() 
         {
             RestRequest request = new RestRequest($"{API_URL}");
             RestResponse<PokemonObject> response = client.Execute<PokemonObject>(request);
