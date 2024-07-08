@@ -115,10 +115,21 @@ namespace Pokemon_CLI.Actions
                         continue;
 
                     case 4:
-                        Console.WriteLine("Which pokemon would you like to view?");
-                        int pokemonId = Convert.ToInt32(Console.ReadLine());
-                        continue;
-
+                    int pokemonId;
+                        while (true) {
+                            Console.WriteLine("Which pokemon would you like to view?");
+                            try {
+                            pokemonId = Convert.ToInt32(Console.ReadLine());
+                            }
+                            catch (FormatException) {
+                                Console.WriteLine("Please input a whole number.");
+                                continue;
+                            }
+                            break;
+                        }
+                        Console.WriteLine(service.GetPokemonByID(pokemonId));
+                        currentPosition = pokemonId;
+                        break;
                     case 5:
                         break;
                 }
