@@ -1,0 +1,17 @@
+C:\Users\neil\Documents\workspace\project a day\Pokemon CLI\obj\Debug\net8.0\Pokemon CLI.csproj.AssemblyReference.cache
+C:\Users\neil\Documents\workspace\project a day\Pokemon CLI\obj\Debug\net8.0\Pokemon CLI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\neil\Documents\workspace\project a day\Pokemon CLI\obj\Debug\net8.0\Pokemon CLI.AssemblyInfoInputs.cache
+C:\Users\neil\Documents\workspace\project a day\Pokemon CLI\obj\Debug\net8.0\Pokemon CLI.AssemblyInfo.cs
+C:\Users\neil\Documents\workspace\project a day\Pokemon CLI\obj\Debug\net8.0\Pokemon CLI.csproj.CoreCompileInputs.cache
+C:\Users\neil\Documents\workspace\project a day\Pokemon CLI\bin\Debug\net8.0\Pokemon CLI.exe
+C:\Users\neil\Documents\workspace\project a day\Pokemon CLI\bin\Debug\net8.0\Pokemon CLI.deps.json
+C:\Users\neil\Documents\workspace\project a day\Pokemon CLI\bin\Debug\net8.0\Pokemon CLI.runtimeconfig.json
+C:\Users\neil\Documents\workspace\project a day\Pokemon CLI\bin\Debug\net8.0\Pokemon CLI.dll
+C:\Users\neil\Documents\workspace\project a day\Pokemon CLI\bin\Debug\net8.0\Pokemon CLI.pdb
+C:\Users\neil\Documents\workspace\project a day\Pokemon CLI\bin\Debug\net8.0\RestSharp.dll
+C:\Users\neil\Documents\workspace\project a day\Pokemon CLI\obj\Debug\net8.0\Pokemon .F9E971FC.Up2Date
+C:\Users\neil\Documents\workspace\project a day\Pokemon CLI\obj\Debug\net8.0\Pokemon CLI.dll
+C:\Users\neil\Documents\workspace\project a day\Pokemon CLI\obj\Debug\net8.0\refint\Pokemon CLI.dll
+C:\Users\neil\Documents\workspace\project a day\Pokemon CLI\obj\Debug\net8.0\Pokemon CLI.pdb
+C:\Users\neil\Documents\workspace\project a day\Pokemon CLI\obj\Debug\net8.0\Pokemon CLI.genruntimeconfig.cache
+C:\Users\neil\Documents\workspace\project a day\Pokemon CLI\obj\Debug\net8.0\ref\Pokemon CLI.dll
