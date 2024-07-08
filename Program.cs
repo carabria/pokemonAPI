@@ -11,10 +11,10 @@ public class Menu
 
         while (true) {
             Console.WriteLine("Let's catch some pokemon!");
-            Console.WriteLine("1: get first group of Pokemon");
-            Console.WriteLine("2: get next group of Pokemon");
-            Console.WriteLine("3: get previous group of Pokemon");
-            Console.WriteLine("4: quit");
+            Console.WriteLine("1: View Pokemon starting from the first");
+            Console.WriteLine($"2: View pokemon from current position ({currentPosition})");
+            Console.WriteLine($"3: get previous group of Pokemon ({currentPosition})");
+            Console.WriteLine("4: View a specific Pokemon");
             Console.Write("Enter choice: ");
             int choice = Convert.ToInt32(Console.ReadLine());
 
@@ -79,6 +79,11 @@ public class Menu
                     break;
 
                 case 4:
+                    break;
+                
+                case 5:
+                    Console.WriteLine("Which pokemon would you like to view?");
+                    int pokemonId = Convert.ToInt32(Console.ReadLine());
                     break;
             }
         }
