@@ -3,6 +3,7 @@ using Pokemon_CLI.Models;
 
 namespace Pokemon_CLI.Actions
 {
+    //TODO: make the -/+ to for next/previous methods be inclusive
     public class ConsoleActions
     {
         public void DisplayMenu(PokemonServices service)
@@ -12,10 +13,10 @@ namespace Pokemon_CLI.Actions
             while (true)
             {
                 Console.WriteLine("Let's catch some pokemon!");
-                Console.WriteLine("1: View Pokemon starting from the first");
+                Console.WriteLine("1: View Pokemon starting from 0");
                 Console.WriteLine($"2: View Next Pokemon from current position ({currentPosition})");
                 Console.WriteLine($"3: View Previous Pokemon from current position ({currentPosition})");
-                Console.WriteLine("4: View a specific Pokemon");
+                Console.WriteLine("4: View a specific Pokemon by ID");
                 Console.Write("Enter choice: ");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
@@ -27,7 +28,7 @@ namespace Pokemon_CLI.Actions
                             string userInput = Console.ReadLine();
                             if (userInput == "")
                             {
-                                pokemonList = service.GetAllPokemon(null);
+                                pokemonList = service.GetAllPokemon();
                                 currentPosition = 20;
                                 break;
                             }
@@ -43,7 +44,7 @@ namespace Pokemon_CLI.Actions
                                     Console.WriteLine("Please input a whole number or press enter.");
                                     continue;
                                 }
-                                pokemonList = service.GetAllPokemon(limit);
+                                pokemonList = service.GetPokemonLimit(limit);
                                 currentPosition = limit;
                                 break;
                             }
@@ -58,7 +59,7 @@ namespace Pokemon_CLI.Actions
                             string userInput = Console.ReadLine();
                             if (userInput == "")
                             {
-                                pokemonList = service.GetNextPokemon(currentPosition, null);
+                                pokemonList = service.GetPokemonOffset(currentPosition, 20);
                                 break;
                             }
 
@@ -74,7 +75,7 @@ namespace Pokemon_CLI.Actions
                                     Console.WriteLine("Please input a whole number or press enter.");
                                     continue;
                                 }
-                                pokemonList = service.GetNextPokemon(currentPosition, limit);
+                                pokemonList = service.GetPokemonOffset(currentPosition, limit);
                                 currentPosition += limit;
                                 break;
                             }
@@ -89,7 +90,7 @@ namespace Pokemon_CLI.Actions
                             string userInput = Console.ReadLine();
                             if (userInput == "")
                             {
-                                pokemonList = service.GetNextPokemon(currentPosition, null);
+                                pokemonList = service.GetPokemonOffset(currentPosition-20, 20);
                                 break;
                             }
 
@@ -105,8 +106,8 @@ namespace Pokemon_CLI.Actions
                                     Console.WriteLine("Please input a whole number or press enter.");
                                     continue;
                                 }
-                                pokemonList = service.GetNextPokemon(currentPosition, limit);
-                                currentPosition += limit;
+                                pokemonList = service.GetPokemonOffset(currentPosition-limit, limit);
+                                currentPosition -= limit;
                                 break;
                             }
                         }
