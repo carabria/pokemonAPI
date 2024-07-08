@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Pokemon_CLI.Models;
 using RestSharp;
 
@@ -25,15 +20,19 @@ namespace Pokemon_CLI.Services
         {
             RestRequest request = new RestRequest($"{API_URL}");
             if (limit.HasValue) {
-                request.AddQueryParameter("limit", limit.Value.ToString());
+                request.AddQueryParameter("limit", limit.ToString());
             }
             RestResponse<PokemonObject> response = client.Execute<PokemonObject>(request);
             return response.Data.Results;
         }
 
-        public Result[] GetNextPokemon() 
+        public Result[] GetNextPokemon(int offset, int? limit) 
         {
             RestRequest request = new RestRequest($"{API_URL}");
+            request.AddQueryParameter("offset", offset.ToString());
+            if (limit.HasValue) {
+                request.AddQueryParameter("limit", limit.ToString());
+            }
             RestResponse<PokemonObject> response = client.Execute<PokemonObject>(request);
             return response.Data.Results;
         }
