@@ -1,6 +1,6 @@
 namespace Pokemon_CLI.Models
 {
-    public class ListPokemonObject
+    public class ListPokemon
     {
         public int Count {get; set;}
         public string Next {get; set;}

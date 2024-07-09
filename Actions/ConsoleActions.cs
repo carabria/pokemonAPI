@@ -3,7 +3,6 @@ using Pokemon_CLI.Models;
 
 namespace Pokemon_CLI.Actions
 {
-    //TODO: make the -/+ to for next/previous methods be inclusive
     public class ConsoleActions
     {
         public void DisplayMenu(PokemonServices service)
@@ -130,7 +129,7 @@ namespace Pokemon_CLI.Actions
                             }
                             break;
                         }
-                        Console.WriteLine(service.GetPokemonByID(pokemonId));
+                        Console.WriteLine(service.GetPokemonById(pokemonId));
                         currentPosition = pokemonId;
                         break;
                         

@@ -4,8 +4,8 @@ namespace Pokemon_CLI.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public Cries[] Cries { get; set; }
         public Species[] Species { get; set; }
+        public Cries[] Cries { get; set; }
         public Sprites[] Sprites { get; set; }
     }
 

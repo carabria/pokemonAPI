@@ -16,3 +16,4 @@ C:\Users\neil\Documents\workspace\project a day\Pokemon CLI\obj\Debug\net8.0\Pok
 C:\Users\neil\Documents\workspace\project a day\Pokemon CLI\obj\Debug\net8.0\Pokemon CLI.genruntimeconfig.cache
 C:\Users\neil\Documents\workspace\project a day\Pokemon CLI\obj\Debug\net8.0\ref\Pokemon CLI.dll
 C:\Users\neil\Documents\workspace\project a day\Pokemon CLI\obj\Debug\net8.0\Pokemon CLI.sourcelink.json
+C:\Users\neil\Documents\workspace\project a day\Pokemon CLI\bin\Debug\net8.0\Newtonsoft.Json.dll
