@@ -129,8 +129,9 @@ namespace Pokemon_CLI.Actions
                             }
                             break;
                         }
-                        Console.WriteLine(service.GetPokemonById(pokemonId));
+                        Pokemon pokemon = service.GetPokemonById(pokemonId);
                         currentPosition = pokemonId;
+                        Console.WriteLine(pokemon);
                         break;
                         
                     case 5:
