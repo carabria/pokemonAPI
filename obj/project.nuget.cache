@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "IjjjtL/WARk=",
+  "dgSpecHash": "faxBSg+qJwI=",
   "success": true,
   "projectFilePath": "C:\\Users\\neil\\Documents\\workspace\\project a day\\Pokemon CLI\\Pokemon CLI.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\neil\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\neil\\.nuget\\packages\\restsharp\\111.3.0\\restsharp.111.3.0.nupkg.sha512"
   ],
   "logs": []

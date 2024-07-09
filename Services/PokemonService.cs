@@ -19,7 +19,7 @@ namespace Pokemon_CLI.Services
 
         public Result [] GetAllPokemon() {
             RestRequest request = new RestRequest($"{API_URL}");
-            RestResponse<PokemonObject> response = client.Execute<PokemonObject>(request);
+            RestResponse<ListPokemonObject> response = client.Execute<ListPokemonObject>(request);
             return response.Data.Results;
 
         }
@@ -27,7 +27,7 @@ namespace Pokemon_CLI.Services
         {
             RestRequest request = new RestRequest($"{API_URL}");
             request.AddQueryParameter("limit", limit.ToString());
-            RestResponse<PokemonObject> response = client.Execute<PokemonObject>(request);
+            RestResponse<ListPokemonObject> response = client.Execute<ListPokemonObject>(request);
             return response.Data.Results;
         }
 
@@ -37,8 +37,8 @@ namespace Pokemon_CLI.Services
             request.AddQueryParameter("offset", offset.ToString());
             if (limit.HasValue) {
                 request.AddQueryParameter("limit", limit.ToString());
-            }
-            RestResponse<PokemonObject> response = client.Execute<PokemonObject>(request);
+3           }
+            RestResponse<ListPokemonObject> response = client.Execute<ListPokemonObject>(request);
             return response.Data.Results;
         }
     }

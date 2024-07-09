@@ -90,7 +90,7 @@ namespace Pokemon_CLI.Actions
                             string userInput = Console.ReadLine();
                             if (userInput == "")
                             {
-                                pokemonList = service.GetPokemonOffset(currentPosition-20, 20);
+                                pokemonList = service.GetPokemonOffset(currentPosition - 20, 20);
                                 break;
                             }
 
@@ -106,7 +106,7 @@ namespace Pokemon_CLI.Actions
                                     Console.WriteLine("Please input a whole number or press enter.");
                                     continue;
                                 }
-                                pokemonList = service.GetPokemonOffset(currentPosition-limit, limit);
+                                pokemonList = service.GetPokemonOffset(currentPosition - limit, limit);
                                 currentPosition -= limit;
                                 break;
                             }
@@ -115,13 +115,16 @@ namespace Pokemon_CLI.Actions
                         continue;
 
                     case 4:
-                    int pokemonId;
-                        while (true) {
+                        int pokemonId;
+                        while (true)
+                        {
                             Console.WriteLine("Which pokemon would you like to view?");
-                            try {
-                            pokemonId = Convert.ToInt32(Console.ReadLine());
+                            try
+                            {
+                                pokemonId = Convert.ToInt32(Console.ReadLine());
                             }
-                            catch (FormatException) {
+                            catch (FormatException)
+                            {
                                 Console.WriteLine("Please input a whole number.");
                                 continue;
                             }
@@ -130,13 +133,15 @@ namespace Pokemon_CLI.Actions
                         Console.WriteLine(service.GetPokemonByID(pokemonId));
                         currentPosition = pokemonId;
                         break;
+                        
                     case 5:
                         break;
                 }
             }
         }
 
-        public void PrintPokemon(Result[] pokemonList) {
+        public void PrintPokemon(Result[] pokemonList)
+        {
             foreach (Result pokemon in pokemonList)
             {
                 Console.WriteLine($"{pokemon.Name} {pokemon.Url}");
