@@ -31,7 +31,6 @@ namespace Pokemon_CLI.Services
             return pokemonList;
         }
 
-
         private List<Pokemon> generatePokemonList(ListPokemon pokemonObject)
         {
             List<Pokemon> pokemonList = new List<Pokemon>();

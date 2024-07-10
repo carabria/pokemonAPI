@@ -1,7 +1,5 @@
 using Pokemon_CLI.Services;
 using Pokemon_CLI.Models;
-using System;
-using System.Collections.Generic;
 
 namespace Pokemon_CLI.Actions
 {
@@ -18,6 +16,7 @@ namespace Pokemon_CLI.Actions
                 Console.WriteLine($"2: View Next Pokemon from current position ({currentPosition})");
                 Console.WriteLine($"3: View Previous Pokemon from current position ({currentPosition})");
                 Console.WriteLine("4: View a specific Pokemon by ID");
+                Console.WriteLine("5: Exit program");
                 Console.Write("Enter choice: ");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 int limit = 0;
@@ -89,7 +88,7 @@ namespace Pokemon_CLI.Actions
             {
                 Console.Write("How many pokemon would you like to view? Leave blank for 20: ");
                 string userInput = Console.ReadLine();
-                if (userInput != null)
+                if (userInput != "")
                 {
                     try
                     {
@@ -105,6 +104,7 @@ namespace Pokemon_CLI.Actions
                 else
                 {
                     limit = 20;
+                    break;
                 }
             }
             return limit;

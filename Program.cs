@@ -2,7 +2,7 @@
 using Pokemon_CLI.Services;
 using Pokemon_CLI.Actions;
 
-public class Pokemon
+public class PokeProgram
 {
     public static void Main()
     {
