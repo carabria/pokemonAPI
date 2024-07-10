@@ -6,7 +6,7 @@ namespace Pokemon_CLI.Services
     public class PokemonServices
     {
         private static RestClient client = null;
-        private static string API_URL = "https://pokeapi.co/api/v2/pokemon";
+        private const string API_URL = "https://pokeapi.co/api/v2/pokemon";
 
         public PokemonServices()
         {
@@ -16,34 +16,45 @@ namespace Pokemon_CLI.Services
             }
         }
 
-
-        public Result [] GetAllPokemon() {
-            RestRequest request = new RestRequest($"{API_URL}");
-            RestResponse<ListPokemon> response = client.Execute<ListPokemon>(request);
-            return response.Data.Results;
-
-        }
-        public Result[] GetPokemonLimit(int limit)
-        {
-            RestRequest request = new RestRequest($"{API_URL}");
-            request.AddQueryParameter("limit", limit.ToString());
-            RestResponse<ListPokemon> response = client.Execute<ListPokemon>(request);
-            return response.Data.Results;
-        }
-
-        public Result[] GetPokemonOffset(int offset, int? limit) 
-        {
-            RestRequest request = new RestRequest($"{API_URL}");
-            request.AddQueryParameter("offset", offset.ToString());
-            if (limit.HasValue) {
+        public List<Pokemon> GetAllPokemon(int? offset, int? limit) {
+            string requestString = API_URL;
+            if (offset != 0) {
+                requestString += $"?offset={offset}";
+            }
+            RestRequest request = new RestRequest(requestString);
+            if (limit != 0) {
                 request.AddQueryParameter("limit", limit.ToString());
             }
             RestResponse<ListPokemon> response = client.Execute<ListPokemon>(request);
-            return response.Data.Results;
+            ListPokemon pokemonObject = response.Data;
+            List<Pokemon> pokemonList = generatePokemonList(pokemonObject);
+            return pokemonList;
         }
-        public Pokemon GetPokemonById(int id) {
+
+
+        private List<Pokemon> generatePokemonList(ListPokemon pokemonObject)
+        {
+            List<Pokemon> pokemonList = new List<Pokemon>();
+            foreach (Result result in pokemonObject.results) {
+                Pokemon pokemon = new Pokemon {
+                    name = result.name,
+                    url = result.url
+                };
+                string url = result.url;
+                int pokemonIndex = url.IndexOf("pokemon");
+                string pokemonString = url.Substring(pokemonIndex);
+                int slashIndex = pokemonString.IndexOf("/");
+                string numberPlusSlash = pokemonString.Substring(slashIndex + 1);
+                string number = numberPlusSlash.Remove(numberPlusSlash.Length - 1, 1);
+                pokemon.id = int.Parse(number);
+                pokemonList.Add(pokemon);
+            }
+            return pokemonList;
+        }
+
+        public PokemonDetail GetPokemonById(int id) {
             RestRequest request = new RestRequest($"{API_URL}/{id}");
-            RestResponse<Pokemon> response = client.Execute<Pokemon>(request);
+            RestResponse<PokemonDetail> response = client.Execute<PokemonDetail>(request);
             return response.Data;
         }
     }

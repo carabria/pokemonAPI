@@ -2,15 +2,15 @@ namespace Pokemon_CLI.Models
 {
     public class ListPokemon
     {
-        public int Count {get; set;}
-        public string Next {get; set;}
-        public object Previous {get; set;}
-        public Result[] Results {get; set;}
+        public int count {get; set;}
+        public string next {get; set;}
+        public object previous {get; set;}
+        public List<Result> results {get; set;}
     }
 
     public class Result
     {
-        public string Name {get; set;}
-        public string Url {get; set;}
+        public string name {get; set;}
+        public string url {get; set;}
     }
 }

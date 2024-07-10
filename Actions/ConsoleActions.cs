@@ -7,7 +7,7 @@ namespace Pokemon_CLI.Actions
     {
         public void DisplayMenu(PokemonServices service)
         {
-            Result[] pokemonList = new Result[20];
+            List<Pokemon> pokemonList = new List<Pokemon>();
             int currentPosition = 0;
             while (true)
             {
@@ -18,6 +18,8 @@ namespace Pokemon_CLI.Actions
                 Console.WriteLine("4: View a specific Pokemon by ID");
                 Console.Write("Enter choice: ");
                 int choice = Convert.ToInt32(Console.ReadLine());
+                int? limit = 0;
+                int? offset = 0;
                 switch (choice)
                 {
                     case 1:
@@ -25,15 +27,7 @@ namespace Pokemon_CLI.Actions
                         {
                             Console.Write("How many pokemon would you like to view? Leave blank for 20: ");
                             string userInput = Console.ReadLine();
-                            if (userInput == "")
-                            {
-                                pokemonList = service.GetAllPokemon();
-                                currentPosition = 20;
-                                break;
-                            }
-                            else
-                            {
-                                int limit = 0;
+                            if (userInput != null) {
                                 try
                                 {
                                     limit = Convert.ToInt32(userInput);
@@ -43,108 +37,109 @@ namespace Pokemon_CLI.Actions
                                     Console.WriteLine("Please input a whole number or press enter.");
                                     continue;
                                 }
-                                pokemonList = service.GetPokemonLimit(limit);
-                                currentPosition = limit;
-                                break;
                             }
+                            pokemonList = service.GetAllPokemon(offset, limit);
+                            currentPosition = 20;
+                            break;
                         }
-                        PrintPokemon(pokemonList);
-                        continue;
+                }
+                PrintPokemon(pokemonList);
+                continue;
 
                     case 2:
-                        while (true)
+                    while (true)
+                    {
+                        Console.Write("How many pokemon would you like to view? Leave blank for 20: ");
+                        string userInput = Console.ReadLine();
+                        if (userInput == "")
                         {
-                            Console.Write("How many pokemon would you like to view? Leave blank for 20: ");
-                            string userInput = Console.ReadLine();
-                            if (userInput == "")
-                            {
-                                pokemonList = service.GetPokemonOffset(currentPosition, 20);
-                                break;
-                            }
-
-                            else
-                            {
-                                int limit = 0;
-                                try
-                                {
-                                    limit = Convert.ToInt32(userInput);
-                                }
-                                catch (FormatException)
-                                {
-                                    Console.WriteLine("Please input a whole number or press enter.");
-                                    continue;
-                                }
-                                pokemonList = service.GetPokemonOffset(currentPosition, limit);
-                                currentPosition += limit;
-                                break;
-                            }
+                            pokemonList = service.GetPokemonOffset(currentPosition, 20);
+                            break;
                         }
-                        PrintPokemon(pokemonList);
-                        continue;
 
-                    case 3:
-                        while (true)
+                        else
                         {
-                            Console.Write("How many pokemon would you like to view? Leave blank for 20: ");
-                            string userInput = Console.ReadLine();
-                            if (userInput == "")
-                            {
-                                pokemonList = service.GetPokemonOffset(currentPosition - 20, 20);
-                                break;
-                            }
-
-                            else
-                            {
-                                int limit = 0;
-                                try
-                                {
-                                    limit = Convert.ToInt32(userInput);
-                                }
-                                catch (FormatException)
-                                {
-                                    Console.WriteLine("Please input a whole number or press enter.");
-                                    continue;
-                                }
-                                pokemonList = service.GetPokemonOffset(currentPosition - limit, limit);
-                                currentPosition -= limit;
-                                break;
-                            }
-                        }
-                        PrintPokemon(pokemonList);
-                        continue;
-
-                    case 4:
-                        int pokemonId;
-                        while (true)
-                        {
-                            Console.WriteLine("Which pokemon would you like to view?");
+                            int limit = 0;
                             try
                             {
-                                pokemonId = Convert.ToInt32(Console.ReadLine());
+                                limit = Convert.ToInt32(userInput);
                             }
                             catch (FormatException)
                             {
-                                Console.WriteLine("Please input a whole number.");
+                                Console.WriteLine("Please input a whole number or press enter.");
                                 continue;
                             }
+                            pokemonList = service.GetPokemonOffset(currentPosition, limit);
+                            currentPosition += limit;
                             break;
                         }
-                        Pokemon pokemon = service.GetPokemonById(pokemonId);
-                        currentPosition = pokemonId;
-                        Console.WriteLine(pokemon);
+                    }
+                    PrintPokemon(pokemonList);
+                    continue;
+
+                case 3:
+                    while (true)
+                    {
+                        Console.Write("How many pokemon would you like to view? Leave blank for 20: ");
+                        string userInput = Console.ReadLine();
+                        if (userInput == "")
+                        {
+                            pokemonList = service.GetPokemonOffset(currentPosition - 20, 20);
+                            break;
+                        }
+
+                        else
+                        {
+                            int limit = 0;
+                            try
+                            {
+                                limit = Convert.ToInt32(userInput);
+                            }
+                            catch (FormatException)
+                            {
+                                Console.WriteLine("Please input a whole number or press enter.");
+                                continue;
+                            }
+                            pokemonList = service.GetPokemonOffset(currentPosition - limit, limit);
+                            currentPosition -= limit;
+                            break;
+                        }
+                    }
+                    PrintPokemon(pokemonList);
+                    continue;
+
+                case 4:
+                    int pokemonId;
+                    while (true)
+                    {
+                        Console.WriteLine("Which pokemon would you like to view?");
+                        try
+                        {
+                            pokemonId = Convert.ToInt32(Console.ReadLine());
+                        }
+                        catch (FormatException)
+                        {
+                            Console.WriteLine("Please input a whole number.");
+                            continue;
+                        }
                         break;
-                        
-                    case 5:
-                        break;
+                    }
+                    Pokemon pokemon = service.GetPokemonById(pokemonId);
+                    currentPosition = pokemonId;
+                    Console.WriteLine(pokemon);
+                    break;
+
+                case 5:
+                    break;
                 }
             }
         }
 
-        public void PrintPokemon(Result[] pokemonList)
+        public void PrintPokemon(List<Pokemon> pokemonList)
         {
-            foreach (Result pokemon in pokemonList)
+            foreach (Pokemon pokemon in pokemonList)
             {
-                Console.WriteLine($"{pokemon.Name} {pokemon.Url}");
+                Console.WriteLine($"{pokemon.name} {pokemon.url}");
             }
         }
     }
