@@ -65,7 +65,7 @@ namespace Pokemon_CLI.Actions
                         }
                         PokemonDetail pokemon = service.GetPokemonById(pokemonId);
                         currentPosition = pokemonId;
-                        Console.WriteLine(pokemon);
+                        Console.WriteLine(pokemon.ToString());
                         continue;
 
                     case 5:
