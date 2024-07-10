@@ -16,7 +16,7 @@ namespace Pokemon_CLI.Services
             }
         }
 
-        public List<Pokemon> GetAllPokemon(int? offset, int? limit) {
+        public List<Pokemon> GetAllPokemon(int offset, int limit) {
             string requestString = API_URL;
             if (offset != 0) {
                 requestString += $"?offset={offset}";
